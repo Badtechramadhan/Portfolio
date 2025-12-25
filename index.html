@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shuaib Phone Accessories</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      transition: background 0.3s, color 0.3s;
+      scroll-behavior: smooth;
+    }
+    body.light { background: #f9f9f9; color: #333; }
+    body.dark { background: #121212; color: #f1f1f1; }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #0077cc;
+      color: #fff;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: background 0.3s;
+    }
+    header h1 { margin: 0; font-size: 1.5rem; }
+    .menu-toggle { font-size: 1.5rem; cursor: pointer; margin-left: 1rem; }
+    .theme-switch {
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      background-color: #fff;
+      color: #0077cc;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: transform 0.2s;
+    }
+    .theme-switch:hover { transform: scale(1.05); }
+
+    /* Side Menu */
+    nav {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #0077cc;
+      padding-top: 4rem;
+      transition: left 0.3s;
+      z-index: 999;
+    }
+    nav ul { list-style: none; padding: 0; }
+    nav ul li { padding: 1rem 2rem; transition: background 0.2s; }
+    nav ul li:hover { background-color: #005fa3; }
+    nav.active { left: 0; }
+
+    /* Sections */
+    section {
+      padding: 6rem 2rem 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+    section.visible { opacity: 1; transform: translateY(0); }
+    h2 { text-align: center; margin-bottom: 2rem; color: #0077cc; }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Testimony */
+    .testimony {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      text-align: center;
+    }
+    .testimony div {
+      padding: 1rem;
+      border: 1px solid #0077cc;
+      border-radius: 8px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .testimony div:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Contact */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .social-links a {
+      margin: 0 0.5rem;
+      font-size: 1.5rem;
+      color: #0077cc;
+      transition: transform 0.2s, color 0.2s;
+    }
+    .social-links a:hover { transform: scale(1.2); color: #005fa3; }
+
+    /* Responsive */
+    @media(min-width: 768px) {
+      .testimony { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media(min-width: 1024px) {
+      .testimony { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body class="light">
+
+  <!-- Header -->
+  <header>
+    <h1>Shuaib Accessories</h1>
+    <div>
+      <button class="theme-switch" onclick="toggleTheme()">Switch Theme</button>
+      <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    </div>
+  </header>
+
+  <!-- Side Menu -->
+  <nav id="sideMenu">
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#testimony">Testimony</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Sections -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <p style="text-align:center;">We specialize in advertising and selling high-quality phone accessories including cases, chargers, earphones, and more!</p>
+  </section>
+
+  <section id="gallery">
+    <h2>Product Gallery</h2>
+    <div class="gallery">
+      <img src="https://via.placeholder.com/200x200?text=Phone+Case+1" alt="Product 1">
+      <img src="https://via.placeholder.com/200x200?text=Charger" alt="Product 2">
+      <img src="https://via.placeholder.com/200x200?text=Earphones" alt="Product 3">
+      <img src="https://via.placeholder.com/200x200?text=Phone+Case+2" alt="Product 4">
+    </div>
+  </section>
+
+  <section id="testimony">
+    <h2>What Our Clients Say</h2>
+    <div class="testimony">
+      <div>"Excellent service and high-quality products!" - John D.</div>
+      <div>"Fast delivery and amazing customer support." - Sarah M.</div>
+      <div>"My go-to shop for all my phone accessories." - Ali K.</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-info">
+      <p>Email: <a href="mailto:ramadhanyusuf346@gmail.com">ramadhanyusuf346@gmail.com</a></p>
+      <p>Phone: <a href="tel:+256745225390">+256745225390</a></p>
+      <p>Location: Kampala, Uganda</p>
+      <div class="social-links">
+        <a href="https://www.tiktok.com/" target="_blank">TikTok</a>
+        <a href="https://telegram.org/" target="_blank">Telegram</a>
+        <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+        <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Side Menu Toggle
+    function toggleMenu() {
+      document.getElementById('sideMenu').classList.toggle('active');
+    }
+
+    // Theme Toggle
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      document.body.classList.toggle('light');
+    }
+
+    // Animate Sections on Scroll
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
